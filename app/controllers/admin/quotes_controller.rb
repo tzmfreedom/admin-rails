@@ -2,6 +2,10 @@ module Admin
   class QuotesController < AdminController
     def new; end
 
+    def show
+      render json: Quote.find(1).to_json(include: :quote_details)
+    end
+
     def create
       Quote.transaction do
         @quote = Quote.new(quote_params)
