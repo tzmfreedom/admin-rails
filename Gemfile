@@ -28,9 +28,9 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'hirb'
-  gem 'hirb-unicode'
+  # gem 'hirb-unicode'
   gem 'awesome_print'
-  gem 'rubocop', require: false
+  gem 'rubocop', '~> 0.49.0', require: false
   gem 'seed-fu'
 end
 
