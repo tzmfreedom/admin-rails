@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2018_05_27_101144) do
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
     t.date "quoted_at", null: false
-    t.integer "amount", null: false
     t.string "contact", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

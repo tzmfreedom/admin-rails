@@ -10,7 +10,7 @@ module Admin
       Quote.transaction do
         @quote = Quote.new(quote_params)
         @quote.save!
-        quote_detail_params.each do |detail|
+        quote_detail_params[:quote_details].each do |detail|
           @quote_detail = QuoteDetail.new(detail)
           @quote_detail.save!
         end
@@ -20,11 +20,11 @@ module Admin
     private
 
     def quote_params
-      params.permit(:name)
+      params.permit(:name, :quoted_at, :contact)
     end
 
     def quote_detail_params
-      params.permit(details: [:name])
+      params.permit(quote_details: [:category, :item_name, :price, :quantity, :quoted_id])
     end
   end
 end
