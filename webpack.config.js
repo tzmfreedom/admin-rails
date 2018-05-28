@@ -19,7 +19,7 @@ if (PRODUCTION) {
 module.exports = {
   mode: 'development',
   entry: {
-    application: path.join(__dirname, 'app/assets/javascripts/admin/application.js'),
+    quotes: path.join(__dirname, 'app/assets/javascripts/admin/quotes.js'),
   },
   output: {
     filename: PRODUCTION ? '[name]-[hash].js' : '[name].js',

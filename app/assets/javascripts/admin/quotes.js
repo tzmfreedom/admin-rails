@@ -32,7 +32,8 @@ let vm = new Vue({
     data: {
         quote: quote,
         details: details,
-        seen: false
+        seen: false,
+        display: true,
     },
     methods: {
         addRow: function() {
@@ -43,6 +44,7 @@ let vm = new Vue({
             })
         },
         create: function() {
+            this.display = true;
             var body = {
                 name: this.quote.name,
                 quoted_at: this.quote.quoted_at,
@@ -58,8 +60,10 @@ let vm = new Vue({
                     'X-CSRF-Token': CSRF_TOKEN,
                 },
             }).then(function(res) {
+                this.display = false;
                 alert('レコードを保存しました');
             }).catch(function(res) {
+                this.display = false;
                 debugger;
             });
         },
@@ -78,6 +82,7 @@ let vm = new Vue({
                 vm.quote.contact = r.data.contact;
 
                 vm.details = r.data.quote_details;
+                vm.display = false;
             });
     },
     components: {
