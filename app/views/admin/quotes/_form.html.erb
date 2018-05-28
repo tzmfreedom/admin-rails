@@ -1,0 +1,62 @@
+<div class="row">
+  <!-- left column -->
+  <div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">見積作成</h3>
+      </div>
+      <form id="form">
+        <loading :active.sync="isLoading" :can-cancel="true" :on-cancel="whenCancelled"></loading>
+        <pulse-loader v-bind:loading="false">
+        <div class="box-body">
+          <div class="form-group">
+            <label><%= Quote.human_attribute_name :name %></label>
+            <input type="text" class="form-control" v-model="quote.name"/>
+          </div>
+          <div class="form-group">
+            <label><%= Quote.human_attribute_name :quoted_at %></label>
+            <input type="text" class="form-control datepicker" v-model="quote.quoted_at" />
+          </div>
+          <div class="form-group">
+            <label><%= Quote.human_attribute_name :contact %></label>
+            <input type="text" class="form-control datepicker" v-model="quote.contact" />
+          </div>
+        </div>
+
+        <div class="box-header">
+          <h3 class="box-title">明細</h3>
+        </div>
+
+        <div class="box-body">
+          <table class="table table-bordered table-hover dataTable">
+            <thead>
+            <tr role="row">
+              <th>商品名</th>
+              <th>金額</th>
+              <th>数量</th>
+              <th style="width: 100px;"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(detail, index) in details">
+              <td><input type="text" class="form-control" v-model="detail.item_name"/></td>
+              <td><input type="number" class="form-control" v-model="detail.price"/></td>
+              <td><input type="number" class="form-control" v-model="detail.quantity"/></td>
+              <td><button type="button" class="btn btn-block btn-danger" v-on:click="deleteRow(index)">削除</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer">
+          <a class="btn btn-primary" v-on:click="addRow">行を追加</a>
+          <a class="btn btn-primary" v-on:click="create">登録</a>
+        </div>
+      </pulse-loader>
+      </form>
+    </div>
+  </div>
+  <!--/.col (right) -->
+</div>
+
+<%= javascript_include_tag 'admin/quotes' %>

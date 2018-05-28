@@ -1,0 +1,56 @@
+<div class="row">
+  <!-- left column -->
+  <div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">見積作成</h3>
+      </div>
+      <div class="box-body col-sm-12">
+        <table class="table table-bordered table-hover dataTable col-sm-6">
+          <tr>
+            <th><%= Quote.human_attribute_name :name %></th>
+            <td><%= @quote.name %></td>
+          </tr>
+          <tr>
+            <th><%= Quote.human_attribute_name :contact %></th>
+            <td><%= @quote.contact %></td>
+          </tr>
+          <tr>
+            <th><%= Quote.human_attribute_name :quoted_at %></th>
+            <td><%= @quote.quoted_at %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="box-header">
+        <h3 class="box-title">明細</h3>
+      </div>
+
+      <div class="box-body">
+        <table class="table table-bordered table-hover dataTable">
+          <thead>
+          <tr role="row">
+            <th>商品名</th>
+            <th>金額</th>
+            <th>数量</th>
+            <th style="width: 100px;"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @quote.quote_details.each do |detail| %>
+            <tr>
+              <td><%= detail.item_name %></td>
+              <td><%= detail.price %></td>
+              <td><%= detail.quantity %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-footer">
+        <%= link_to '編集', edit_admin_quote_path(@quote), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -71,7 +71,7 @@ else
 endif
 
 .PHONY: db/init
-db/init: db/drop db/create db/migrate db/seed annotate
+db/init: db/drop db/create db/migrate db/seed
 
 .PHONY: db/drop
 db/drop:
@@ -80,10 +80,6 @@ db/drop:
 .PHONY: db/migrate
 db/migrate:
 	$(MAKE) run COMMAND="bundle exec rake db:migrate"
-
-.PHONY: annotate
-annotate:
-	$(MAKE) run COMMAND="bundle exec annotate"
 
 .PHONY: db/create
 db/create:
@@ -126,3 +122,7 @@ install:
 .PHONY: watch
 watch:
 	./node_modules/.bin/webpack-cli
+
+.PHONY: compile
+compile:
+	npx webpack

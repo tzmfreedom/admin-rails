@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2018_05_27_101144) do
 
   create_table "quote_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.string "category", null: false
     t.string "item_name", null: false
     t.integer "price", null: false
     t.integer "quantity", null: false
